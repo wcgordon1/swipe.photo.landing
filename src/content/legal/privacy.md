@@ -1,92 +1,113 @@
 ---
 page: Privacy
-pubDate: 2024-00-00
+pubDate: 2026-01-22
 ---
 
-California Resident Notice at Collection
-========================================
+# Privacy Policy — Swipe.Photo
 
-If you are a California resident, the California Consumer Privacy Act, as amended by the California Privacy Rights Act of 2020 (“**CCPA**”), requires us to provide some additional information to California residents. This Section only applies to you if you are a California resident, although please note that this information and the rights afforded herein are the same as offered to our other users in our main Privacy Policy. This Section does not apply to personal information we collect from our employees and job applicants in their capacity as employees and job applicants, as such information practices are described in separate policies.
+**Effective date:** 2026-01-22
 
-The following chart details these activities:
+Swipe.Photo is a simple iPhone app for reviewing photos and swiping to keep or delete. We built it to work **without accounts** and without collecting personal information.
 
-**Category of personal information**
+If you have questions, email: **support@starterbuild.com** (replace with your real support email)
 
-**Purposes of use**
+---
 
-**Categories of Third Parties Information**
+## Summary (plain speak)
 
-**Categories of Third Parties**
+- We do **not** require a login.
+- We do **not** collect or store your name, email, phone number, or contacts.
+- Your photos stay on your device. We do **not** upload your photo library to our servers.
+- Purchases (if any) are handled by Apple and our billing provider; we don’t get your full payment details.
 
-Contact information (such as your full name, phone number, email address)
+---
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+## Information we collect
 
-Affiliated entities; Service providers; Entities for legal purposes
+### Information you provide
+**None.** Swipe.Photo does not have a signup or login, and we do not ask you to submit personal information.
 
-We do not share/sell
+### Photos and photo library access
+Swipe.Photo needs permission to access your Photos so you can review your camera roll and delete photos.
 
-Customer service interaction information (including optional surveys and when you ask for help)
+- Photos are processed **on your device**.
+- We do **not** view, store, or upload your photos to our servers.
+- If you choose to delete a photo, that deletion happens through Apple’s Photos framework on your device.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+You can remove photo access anytime in **iOS Settings → Privacy & Security → Photos**.
 
-Affiliated entities; Service providers; Entities for legal purposes
+### Device and app data (limited)
+Like most apps, Swipe.Photo may receive limited technical data from Apple (and/or tools we use) to help the app work reliably, such as:
+- crash reports
+- basic device/app version information
+- performance diagnostics
 
-We do not share/sell
+This information is used to fix bugs and improve stability, not to identify you.
 
-Product interaction information
+---
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+## Purchases and subscriptions
 
-Affiliated entities; Service providers; Entities for legal purposes
+If Swipe.Photo offers paid features:
+- Purchases are processed by **Apple’s App Store**.
+- We use **RevenueCat** to manage subscriptions and entitlements.
 
-We do not share/sell
+We do not receive your full payment information (like your credit card number). Apple and/or RevenueCat may process purchase-related data in order to confirm your subscription status and prevent fraud.
 
-Internet network and device information (such as mobile device information, IP address, and information about your interaction with the services)
+---
 
-Provide the Services; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+## How we use information
 
-Affiliated entities; Service providers; Entities for legal purposes;
+If we receive limited technical data, we use it only to:
+- keep the app working
+- debug crashes
+- improve performance and reliability
 
-We do not share/sell
+We do not use your data to build advertising profiles.
 
-Login information (such as your username and password)
+---
 
-Provide the Services; Comply with law or defend our legal rights; Security/fraud prevention; Comply with law or defend our legal rights
+## Sharing your information
 
-Affiliated entities; Service providers; Entities for legal purposes
+We do not sell your personal information.
 
-We do not share/sell
+We may share limited technical or purchase-related information only with:
+- **Apple** (App Store and iOS services)
+- **RevenueCat** (subscription management)
 
-Professional or employment information (such as the name and address of the company you work for and your title)
+…and only for operating the app and providing purchases/subscriptions.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+---
 
-Affiliated entities; Service providers; Entities for legal purposes;
+## Data retention
 
-We do not share/sell
+Swipe.Photo does not maintain user accounts, so we do not store personal profiles.
 
-Other information (any other information you choose to provide directly to us, including optional profile photos)
+If we receive crash logs or diagnostics, those are retained only as long as needed for troubleshooting and improving the app.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+---
 
-Affiliated entities; Service providers; Entities for legal purposes;
+## Your choices
 
-We do not sell/share
+- **Photo access:** You can change or revoke access in iOS Settings anytime.
+- **Subscriptions:** You can manage or cancel subscriptions through your Apple ID subscription settings.
 
-For more information about each category of personal information, purpose of use, and third parties to which we disclose personal information, please see the "What we collect and why," and "When we access or disclose you information" sections of our Privacy Policy.
+---
 
-**Your Choices Regarding “Sharing” and “Selling”**: You have the right to opt out of our sale/sharing of your personal information for purposes of online analytics and advertising. Currently, we do not sell or share your data as defined by the CCPA and we have not done so over the past 12 months from the effective date of this Privacy Policy.
+## Children’s privacy
 
-**Other CCPA Rights.** If we ever offer any financial incentives in exchange for your personal information, we will provide you with appropriate information about such incentives.
+Swipe.Photo is not designed to collect personal information from children. Since we do not collect personal information through the app, we do not knowingly collect personal data from children.
 
-The CCPA also allows you to limit the use or disclosure of your “sensitive personal information” (as defined in the CCPA) if your sensitive personal information is used for certain purposes. Please note that we do not use or disclose sensitive personal information other than for business purposes for which you cannot opt out under the CCPA.
+---
 
-Please see the “Your rights with respect to your information” section of our Policy above for information about the additional rights you have with respect to your personal information under California law and how to exercise them.
+## Changes to this policy
 
-Retention of Your Personal Information. Please see the “Retention Of Your Information” section belowof our Privacy Policy for more information.
+If we change this Privacy Policy, we will update the effective date above. If changes are significant, we’ll make a reasonable effort to notify users (for example, via an in-app notice or App Store update notes).
 
-Shine the Light Disclosure
---------------------------
+---
 
-The California "Shine the Light" law gives residents of California the right under certain circumstances to request information from us regarding the manner in which we disclose certain categories of personal information (as defined in the Shine the Light law) with third parties for their direct marketing purposes. We currently do not disclose your personal information to third parties for their own direct marketing purposes.
+## Contact
+
+Questions about privacy?
+
+Email: **support@starterbuild.com**
