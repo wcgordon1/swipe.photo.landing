@@ -1,16 +1,20 @@
 ---
 name: David Lee
-role: UI Designer
+role: Head of Industrial Design
 bio: |
-  David Lee is a UI designer who specializes in clear, system-driven interfaces. He builds component libraries, grid systems, and interaction patterns that scale across products.
+  Daniel Lee is an industrial designer who brings physical design principles into digital environments.
 
-  His process blends fast prototyping with accessibility checks and design tokens, so engineering teams can ship consistent experiences quickly.
+  He studied Industrial Design at Rhode Island School of Design, where critique culture and spatial rigor permanently altered his perception. Some say for the worse. 
 
-  David focuses on evidence-based design: he tests microcopy, measures conversion lifts, and refines motion to keep interfaces calm and focused.
+  Swipe.Photo reflects his belief that decisions should feel physical, final, and light. A good system doesn’t cheer you on. It gets out of the way.
+
+  
 achievements:
-  - Led the rollout of a token-based design system adopted by 5 product squads.
-  - Increased checkout conversion by 8% through hierarchy and microcopy refinements.
-  - Built a reusable motion library that cut prototype time by 40%.
+  - Feng Shui Icon of the Century Award in Tokyo, 2003
+  - Got into a fist fight with the CEO of Adobe
+  - Claims he is a related to Frank Lloyd Wright, Ludwig Mies van der Rohe, and Norman Foster through his Father's side
+  - Always takes the stairs
+
 image:
   url: "/src/images/team/david-lee.png"
   alt: "Portrait of David Lee"

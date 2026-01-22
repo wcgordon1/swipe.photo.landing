@@ -2,4 +2,7 @@
 const { class: className = "", ...rest } = Astro.props;
 ---
 
-<span class={className} {...rest}>Swipe . Photo</span>
+<span class={className} {...rest}>
+  <span style="margin-right: 0.3em; font-size: 1.4em;">📸</span>
+  Swipe . Photo
+</span>
