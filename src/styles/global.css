@@ -58,7 +58,7 @@
     transparent 6px
   );
   /* Keyframes */
-  --animate-marquee: marquee 50s linear infinite;
+  --animate-marquee: marquee 150s linear infinite;
   @keyframes marquee {
     0% {
       transform: translateX(0%);

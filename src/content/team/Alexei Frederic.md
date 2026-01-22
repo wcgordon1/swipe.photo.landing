@@ -4,10 +4,9 @@ role: Lead Quantum Computing Engineer
 bio: |
   Solved P vs NP at fourteen. Didn't publish. Said the distinction was “philosophical, not computational.”
 
-  A Chess grandmaster before he could legally drive. Beat Kasparov in a blitz match at a Moscow train station. Kasparov retired the next day. 
+  A Chess grandmaster at six. Beat Kasparov in a blitz match at a Moscow train station. Kasparov retired the next day. 
 
-  Harvard gave him a full scholarship. He lasted three lectures. Told the dean that "American universities teach men to think like women." They asked him to leave. 
-  He was already gone.
+  Harvard gave him a full scholarship. He lasted three lectures. Informed the dean that “American universities teach men to mistake consensus for truth.”
 
   Made partner at Jane Street in eleven months. Built an options pricing model that extracted forty million dollars in a single afternoon. Gave his bonus to a homeless man outside the office. Said nothing. They named a conference room after him when he left.
 
