@@ -1,0 +1,56 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="border-b">
+      <div class="p-8 relative bg-grid">
+        <Text
+          tag="h1"
+          variant="display2XL"
+          class="text-white tracking-tighter font-black uppercase relative text-balance"
+        >
+          {frontmatter.page}
+        </Text>
+      </div>
+
+      <div
+        class="grid grid-cols-1 lg:grid-cols-3 items-start justify-between gap-4 p-8 border-y border-white/20"
+      >
+        <div
+          class="flex items-center gap-2 text-white text-sm uppercase font-medium"
+        >
+          <span>Last updated</span>
+          <span>•</span>
+          <time datetime={new Date(frontmatter.pubDate).toISOString()}>
+            {
+              new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+              })
+            }
+          </time>
+        </div>
+        <Text
+          variant="textLG"
+          tag="p"
+          class="text-white font-medium lg:col-span-2"
+        >
+          Legal information and policies for AstroMax.
+        </Text>
+      </div>
+
+      <Wrapper variant="narrow" class="p-8 mx-auto">
+        <Wrapper variant="prose">
+          <slot />
+        </Wrapper>
+      </Wrapper>
+    </Wrapper>
+  </section>
+</BaseLayout>

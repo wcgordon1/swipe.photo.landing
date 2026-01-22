@@ -1,0 +1,92 @@
+---
+// Assets
+import Logo from "@/components/assets/Logo.astro";
+import BgGrid from "@/components/assets/BgGrid.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+
+const links = [
+  {
+    title: "Explore",
+    items: [
+      { label: "Work", href: "/work" },
+      { label: "Blog", href: "/blog" },
+      { label: "Store", href: "/store" },
+      { label: "Team", href: "/team" },
+    ],
+  },
+  {
+    title: "Legal",
+    items: [
+      { label: "Privacy Policy", href: "/legal/privacy" },
+      { label: "Terms of Use", href: "/legal/terms" },
+    ],
+  },
+];
+---
+
+<footer>
+  <Wrapper variant="standard" class="border-y">
+    <div class="p-8 border-b border-white/20">
+      <div
+        class="flex flex-col lg:flex-row justify-between gap-12 "
+      >
+        <div class="flex flex-col gap-4">
+          <a
+            href="/"
+            class="text-white font-medium uppercase tracking-tight w-fit"
+          >
+            <Logo />
+          </a>
+          <Text
+            tag="p"
+            variant="textSM"
+            class="text-white/60 max-w-sm text-balance"
+          >
+            AstroMax is a creative agency building digital experiences that
+            matter.
+          </Text>
+        </div>
+        <div class="flex flex-wrap gap-12 lg:gap-24">
+          {
+            links.map((group) => (
+              <div>
+                <Text
+                  tag="h3"
+                  variant="textBase"
+                  class="text-white font-semibold uppercase tracking-tight"
+                >
+                  {group.title}
+                </Text>
+                <ul class="flex flex-col gap-2 mt-4">
+                  {group.items.map((link) => (
+                    <li>
+                      <a
+                        href={link.href}
+                        class="text-white/60 hover:text-accent-500 text-sm font-medium uppercase transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <div
+      class="p-8"
+    >
+      <Text
+        variant="textSM"
+        class="text-secondary-400 uppercase font-medium"
+      >
+        © {new Date().getFullYear()} AstroMax. All rights reserved.
+      </Text>
+      
+    </div>
+  </Wrapper>
+</footer>

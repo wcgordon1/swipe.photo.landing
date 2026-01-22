@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+@plugin "tailwind-scrollbar-hide";
+@theme {
+  /* Typography */
+  --font-sans: "Geist", sans-serif;
+  --color-white: #e7e7d8;
+  /* Secondary */
+ --color-secondary-50: oklch(0.964 0.023 101.3);
+  --color-secondary-100: oklch(0.938 0.041 101.08);
+  --color-secondary-200: oklch(0.869 0.038 100.43);
+  --color-secondary-300: oklch(0.81 0.036 101.72);
+  --color-secondary-400: oklch(0.741 0.032 101.01);
+  --color-secondary-500: oklch(0.637 0.028 99.72);
+  --color-secondary-600: oklch(0.542 0.024 101.28);
+  --color-secondary-700: oklch(0.439 0.019 103.22);
+  --color-secondary-800: oklch(0.335 0.014 101.23);
+  --color-secondary-900: oklch(0.241 0.011 107.17);
+  --color-secondary-950: oklch(0.186 0.008 95.46);
+  /* Accent */
+ --color-accent-50: oklch(0.959 0.019 21.66);
+  --color-accent-100: oklch(0.926 0.034 20.05);
+  --color-accent-200: oklch(0.845 0.077 22.78);
+  --color-accent-300: oklch(0.772 0.122 24.55);
+  --color-accent-400: oklch(0.701 0.174 27.73);
+  --color-accent-500: oklch(0.622 0.21 32.02);
+  --color-accent-600: oklch(0.528 0.178 31.83);
+  --color-accent-700: oklch(0.43 0.145 32.15);
+  --color-accent-800: oklch(0.332 0.112 32.13);
+  --color-accent-900: oklch(0.242 0.082 31.43);
+  --color-accent-950: oklch(0.185 0.061 31.8);
+  /* Base */
+ --color-base-50: oklch(0.958 0.000 0.0);
+  --color-base-100: oklch(0.922 0.000 0.0);
+  --color-base-200: oklch(0.836 0.000 0.0);
+  --color-base-300: oklch(0.757 0.000 0.0);
+  --color-base-400: oklch(0.680 0.000 0.0);
+  --color-base-500: oklch(0.596 0.000 0.0);
+  --color-base-600: oklch(0.517 0.000 0.0);
+  --color-base-700: oklch(0.439 0.000 0.0);
+  --color-base-800: oklch(0.352 0.000 0.0);
+  --color-base-900: oklch(0.277 0.000 0.0);
+  --color-base-950: oklch(0.235 0.000 0.0);
+  --background-image-grid:
+  repeating-linear-gradient(
+    to right,
+    rgba(205, 205, 205, 0.2) 0px,
+    rgba(205, 205, 205, 0.2) 1px,
+    transparent 1px,
+    transparent 6px
+  ),
+  repeating-linear-gradient(
+    to bottom,
+    rgba(205, 205, 205, 0.2) 0px,
+    rgba(205, 205, 205, 0.2) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  /* Keyframes */
+  --animate-marquee: marquee 50s linear infinite;
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+  .keen-slider__slide {
+    overflow: visible;
+  }

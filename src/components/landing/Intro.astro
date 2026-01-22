@@ -1,0 +1,27 @@
+---
+// Assets
+import BgGrid from "@/components/assets/BgGrid.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<section>
+  <Wrapper class="border-b divide-y divide-white/20">
+    <div class="p-8 relative">
+      <BgGrid />
+      <Text
+      tag="h2"
+        variant="displayMD"
+        class="text-white font-black uppercase tracking-tight text-balance"
+      >
+        AstroMax crafts bold, high-impact one-page websites—designed, refined,
+        and built to captivate.
+        <br />
+        <br />
+        Built with Astro and Tailwind CSS, each site is fast, sharp, and tailored
+        to tell your story and make your brand stand out. Simple, effective, unforgettable.
+      </Text>
+    </div>
+  </Wrapper>
+</section>

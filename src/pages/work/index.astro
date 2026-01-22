@@ -1,0 +1,35 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import WorkCard from "@/components/work/WorkCard.astro";
+// Content
+import { getCollection } from "astro:content";
+const workItems = await getCollection("work");
+workItems.sort((a, b) => {
+  const yearA = a.data.year ?? 0;
+  const yearB = b.data.year ?? 0;
+  return yearB - yearA;
+});
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard">
+      <div class="p-8 bg-grid">
+        <Text
+          tag="h1"
+          variant="display3XL"
+          class="text-white tracking-tighter font-black uppercase relative"
+        >
+          Selected work
+        </Text>
+      </div>
+      <div class="p-8 grid grid-cols-1 md:grid-cols-2  gap-8">
+        {workItems.map((item) => <WorkCard post={item} />)}
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

@@ -1,0 +1,129 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard">
+      <div class="p-8 bg-grid space-y-4">
+        <Text
+          tag="h1"
+          variant="display3XL"
+          class="text-white tracking-tighter font-black uppercase"
+        >
+          Contact
+        </Text>
+      </div>
+      <div class="p-8">
+        <Text variant="textLG" class="text-base-200 max-w-3xl">
+          Reach out about new work, partnerships, or press. We keep replies
+          focused and respond within one business day.
+        </Text>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 border-t border-white/20">
+        <div class="p-8 space-y-8">
+          <Text
+            tag="h3"
+            variant="textLG"
+            class="uppercase font-medium text-white text-balance"
+          >
+            New projects
+          </Text>
+          <Text variant="textBase" class="text-white/70 max-w-md">
+            Tell us about your timeline, goals, and team. We'll shape a scope
+            and share a kickoff slot.
+          </Text>
+
+          <div>
+            <Text
+              tag="p"
+              variant="textBase"
+              class="text-white font-semibold uppercase tracking-tight"
+            >
+              +00 12 34 56 78
+            </Text>
+            <Text variant="textSM" class="text-secondary-400 mt-2">
+              Mon-Fri / 09:00-18:00 CET
+            </Text>
+            <a
+              href="mailto:#_"
+              class="text-white font-semibold uppercase tracking-tight mt-4 flex"
+            >
+              astromaxsp@example.com
+            </a>
+          </div>
+        </div>
+
+        <div class="p-8 space-y-8">
+          <div>
+            <Text
+              tag="h3"
+              variant="textLG"
+              class="uppercase font-medium text-white text-balance"
+            >
+              Partnerships & press
+            </Text>
+            <Text variant="textBase" class="text-white/70 mt-2">
+              For interviews, collaborations, or speaking invites, send us a
+              short brief and timeline.
+            </Text>
+          </div>
+          <div class="space-y-1">
+            <a
+              href="mailto:press@andreuzza.com"
+              class="text-white font-semibold uppercase tracking-tight"
+            >
+              press@andreuzza.com
+            </a>
+            <Text variant="textSM" class="text-secondary-400 mt-2">
+              Press kits and headshots available on request
+            </Text>
+          </div>
+        </div>
+
+        <div class="p-8">
+          <Text
+            tag="h3"
+            variant="textLG"
+            class="uppercase font-medium text-white text-balance"
+          >
+            Studios
+          </Text>
+          <div class="space-y-8">
+            <div>
+              <Text
+                tag="p"
+                variant="textBase"
+                class="text-white font-semibold uppercase tracking-tight"
+              >
+                Copenhagen
+              </Text>
+              <Text variant="textSM" class="text-secondary-400 mt-2">
+                Vesterbro Torv 3, 2nd floor
+              </Text>
+            </div>
+            <div>
+              <Text
+                tag="p"
+                variant="textBase"
+                class="text-white font-semibold uppercase tracking-tight"
+              >
+                Remote-first
+              </Text>
+              <Text variant="textSM" class="text-secondary-400 mt-2">
+                CET core hours / Async-friendly
+              </Text>
+            </div>
+          </div>
+          <Text variant="textSM" class="text-secondary-400 mt-8">
+            Need NDAs or vendor onboarding docs? Email us and we'll share them
+            before kickoff.
+          </Text>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

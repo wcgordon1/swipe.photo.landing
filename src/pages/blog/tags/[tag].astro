@@ -1,0 +1,55 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import BlogEntry from "@/components/blog/BlogCard.astro";
+// Content
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+  const uniqueTags = [
+    ...new Set(allPosts.map((post) => post.data.tags).flat()),
+  ];
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout>
+  <section>
+    <section>
+      <Wrapper variant="standard">
+        <div class="p-8 bg-grid">
+          <Text
+            tag="h1"
+            variant="display3XL"
+            class="text-white tracking-tighter font-black uppercase relative"
+          >
+            All posts about
+            {tag}
+          </Text>
+        </div>
+        <div
+          class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-t border-white/20"
+        >
+          {
+            posts.map((post, index) => (
+              <BlogEntry post={post} index={index + 1} />
+            ))
+          }
+        </div>
+      </Wrapper>
+    </section>
+  </section>
+</BaseLayout>

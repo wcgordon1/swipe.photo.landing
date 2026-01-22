@@ -1,0 +1,178 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import WorkCard from "@/components/work/WorkCard.astro";
+// Content
+import { getCollection } from "astro:content";
+
+const { frontmatter } = Astro.props;
+const currentSlug = Astro.url.pathname.split("/").filter(Boolean).pop();
+const allWork = await getCollection("work");
+const relatedWork = allWork.filter((item) => item.slug !== currentSlug);
+const services = frontmatter.services ?? [];
+const industries = frontmatter.industries ?? [];
+const gallery = frontmatter.gallery ?? [];
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard">
+      <div class="p-8 relative bg-grid">
+        <Text
+          tag="h1"
+          variant="display2XL"
+          class="text-white tracking-tighter font-black uppercase relative text-balance"
+        >
+          {frontmatter.bodyHeading ?? frontmatter.title}
+        </Text>
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start justify-between gap-8 p-8 border-t border-white/20"
+      >
+        <div>
+          <Text variant="textBase" tag="p" class="text-white font-medium">
+            {frontmatter.summary}
+          </Text>
+          <Button isLink variant="default" size="xxs" class="w-fit mt-8" href={frontmatter.link}>
+            View project
+          </Button>
+        </div>
+        <div>
+          <Text
+            tag="h3"
+            variant="textBase"
+            class="text-white uppercase font-medium"
+          >
+            Info</Text
+          >
+          <div
+            class="divide-y space-y-2 divide-white/20 text-white text-sm font-medium mt-4"
+          >
+            <div class="flex items-center justify-between gap-2 pb-2">
+              <span class="uppercase">Client:</span>
+              <span class="text-secondary-400">{frontmatter.client}</span>
+            </div>
+            <div class="flex items-center justify-between gap-2 pb-2">
+              <span class="uppercase">Location:</span>
+              <span class="text-secondary-400">{frontmatter.location}</span>
+            </div>
+
+            <div class="flex items-center justify-between gap-2 pb-2">
+              <span class="uppercase">Year:</span>
+              <span class="text-secondary-400">{frontmatter.year}</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <Text
+            tag="h3"
+            variant="textBase"
+            class="text-white uppercase font-medium"
+          >
+            Services</Text
+          >
+          <div class="flex flex-col gap-2 mt-4">
+            {
+              services.map((service) => (
+                <Text tag="p" variant="textSM" class="text-secondary-400 ">
+                  {service}
+                </Text>
+              ))
+            }
+          </div>
+        </div>
+        <div>
+          {
+            industries.length > 0 && (
+              <>
+                <Text
+                  tag="h3"
+                  variant="textBase"
+                  class="text-white uppercase font-medium"
+                >
+                  Industries
+                </Text>
+                <ul class="flex flex-col gap-2 mt-4">
+                  {industries.map((item) => (
+                    <li class="text-secondary-400 text-sm">{item}</li>
+                  ))}
+                </ul>
+              </>
+            )
+          }
+        </div>
+      </div>
+
+      <Image
+        width={1400}
+        height={800}
+        src={frontmatter.image.url}
+        alt={frontmatter.image.alt}
+        class="w-full object-cover aspect-4/2"
+      />
+
+      <Wrapper variant="narrow" class="p-8 mx-auto">
+        <Wrapper variant="prose">
+          <slot />
+
+        </Wrapper>
+      </Wrapper>
+          {
+            gallery.length > 0 && (
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8 border-t border-white/20">
+                {gallery.map((item) => (
+                  <Image
+                    src={item.url}
+                    alt={item.alt}
+                    width={800}
+                    height={600}
+                    class="w-full object-cover  aspect-4/3"
+                  />
+                ))}
+              </div>
+            )
+          }
+    </Wrapper>
+  </section>
+
+  {
+    relatedWork.length > 0 && (
+      <section>
+        <Wrapper variant="standard">
+          <div class="p-8 bg-grid">
+            <div class="flex items-center justify-between">
+              <Text
+                tag="h2"
+                variant="displayMD"
+                class="text-white font-black uppercase tracking-tighter"
+              >
+                More work
+              </Text>
+              <Button
+                isLink
+                size="xs"
+                variant="default"
+                href="/work"
+                class="w-fit"
+              >
+                View all work
+              </Button>
+            </div>
+          </div>
+          <div class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-t border-white/20">
+            {relatedWork.slice(0, 3).map((item) => (
+              <WorkCard post={item} />
+            ))}
+          </div>
+        </Wrapper>
+      </section>
+    )
+  }
+</BaseLayout>

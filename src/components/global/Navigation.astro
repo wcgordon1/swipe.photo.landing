@@ -1,0 +1,96 @@
+---
+import Logo from "@/components/assets/Logo.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const links = [
+  { label: "Work", href: "/work" },
+  { label: "Blog", href: "/blog" },
+  { label: "Store", href: "/store" },
+  { label: "Team", href: "/team" },
+  { label: "Overview", href: "/system/overview" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-base-950">
+  <Wrapper variant="standard" class="border-b border-white/20 relative">
+    <div class="flex items-center justify-between px-8 py-4">
+      <a
+        href="/"
+        class="text-white font-black uppercase tracking-tight hover:text-accent-500 transition-colors duration-200"
+      >
+        <Logo />
+      </a>
+      <nav class="hidden md:block">
+        <ul class="flex items-center gap-8">
+          {
+            links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-white hover:text-accent-400 text-lg font-meidum uppercase transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="hidden md:block">
+        <Button
+          isLink
+          href="https://buy.polar.sh/polar_cl_FXRw3SyBuhQ13WXNoPoMoYL7yI7WGkerm9v8t2IY6xY"
+          variant="default"
+          size="xs"
+          class="rounded-full"
+        >
+          Buy AstroMax SP
+        </Button>
+      </div>
+      <!-- Mobile Menu Button -->
+      <button
+        id="menu-toggle"
+        aria-label="Toggle menu"
+        class="md:hidden text-white focus:outline-none hover:text-accent-500 transition-colors"
+      >
+        Menu
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden border-t border-white/20 bg-base-950 absolute left-0 right-0 top-full h-screen border-x border-white/20 -mx-px"
+    >
+      <nav class="flex flex-col p-8 gap-6 items-center text-center">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="text-white hover:text-accent-500 text-xl font-black uppercase tracking-tighter transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <div class="pt-4 w-full max-w-xs">
+          <Button
+            isLink
+            href="/system/overview"
+            variant="default"
+            size="md"
+            class="rounded-full w-full justify-center"
+          >
+            System
+          </Button>
+        </div>
+      </nav>
+    </div>
+  </Wrapper>
+</header>
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  menuToggle?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+</script>

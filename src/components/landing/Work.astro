@@ -1,0 +1,161 @@
+---
+// Assets
+import { Image } from "astro:assets";
+import Aelen from "@/images/work/aelen.png";
+import Author from "@/images/work/author.png";
+import Dusk from "@/images/work/dusk.png";
+import Ellamae from "@/images/work/ellamae.png";
+import Molle from "@/images/work/molle.png";
+import Semplice from "@/images/work/semplice.png";
+import Streamer from "@/images/work/streamer.png";
+const themes = [
+  { name: "Aelen", image: Aelen },
+  { name: "Author", image: Author },
+  { name: "Dusk", image: Dusk },
+  { name: "Ellamae", image: Ellamae },
+  { name: "Molle", image: Molle },
+  { name: "Semplice", image: Semplice },
+  { name: "Streamer", image: Streamer },
+];
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Icons
+import ArrowRight from "@/components/fundations/icons/ArrowRight.astro";
+import ArrowLeft from "@/components/fundations/icons/ArrowLeft.astro";
+// Components
+import BgGrid from "@/components/assets/BgGrid.astro";
+---
+
+<section>
+  <Wrapper class="divide-y divide-white/20">
+    <div class="px-8 py-6 relative">
+      <BgGrid />
+      <Text
+        tag="h2"
+        variant="displayMD"
+        class="font-black text-white uppercase"
+      >
+        Designed and developed websites at AstroMax
+      </Text>
+    </div>
+    <div class="relative">
+      <div
+        class="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2 pointer-events-none z-10"
+      >
+        <Button
+          size="xs"
+          iconOnly
+          variant="default"
+          id="keen-slider-previous"
+          aria-label="Previous slide"
+          class="pointer-events-auto"
+        >
+          <ArrowLeft slot="icon" size="sm" />
+        </Button>
+        <Button
+          size="xs"
+          iconOnly
+          variant="default"
+          id="keen-slider-next"
+          aria-label="Next slide"
+          class="pointer-events-auto"
+        >
+          <ArrowRight slot="icon" size="sm" />
+        </Button>
+      </div>
+      <div
+        id="keen-slider"
+        class="keen-slider relative divide-x divide-white/20"
+      >
+        {
+          themes.map(({ name, image }) => (
+            <div class="relative w-full keen-slider__slide ">
+              <Image
+                src={image}
+                alt={name}
+                width={800}
+                height={800}
+                loading="eager"
+                decoding="async"
+                class="aspect-auto"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Wrapper>
+</section>
+<script type="module">
+  import KeenSlider from "https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm";
+  window.addEventListener("DOMContentLoaded", () => {
+    const autoplay = (slider) => {
+      let timeout;
+      let mouseOver = false;
+      function clearNextTimeout() {
+        clearTimeout(timeout);
+      }
+      function nextTimeout() {
+        clearTimeout(timeout);
+        if (mouseOver) return;
+        timeout = setTimeout(() => {
+          slider.next();
+        }, 500);
+      }
+      slider.on("created", () => {
+        slider.container.addEventListener("mouseover", () => {
+          mouseOver = true;
+          clearNextTimeout();
+        });
+        slider.container.addEventListener("mouseout", () => {
+          mouseOver = false;
+          nextTimeout();
+        });
+        nextTimeout();
+      });
+      slider.on("dragStarted", clearNextTimeout);
+      slider.on("animationEnded", nextTimeout);
+      slider.on("updated", nextTimeout);
+    };
+    const sliderEl = document.getElementById("keen-slider");
+    if (!sliderEl) {
+      console.warn("Slider element not found");
+      return;
+    }
+    const keenSlider = new KeenSlider(
+      sliderEl,
+      {
+        loop: true,
+        defaultAnimation: {
+          duration: 1000,
+        },
+        detailsChanged: (s) => {
+          s.slides.forEach((element, idx) => {
+            element.style.opacity = s.track.details.slides[idx].portion;
+          });
+        },
+        slides: {
+          origin: "center",
+          perView: 2.2,
+          spacing: 12,
+        },
+        breakpoints: {
+          "(min-width: 1024px)": {
+            slides: {
+              origin: "center",
+              perView: 3.5,
+              spacing: 0,
+            },
+          },
+        },
+      },
+      [autoplay]
+    );
+    const keenSliderPrevious = document.getElementById("keen-slider-previous");
+    const keenSliderNext = document.getElementById("keen-slider-next");
+    keenSliderPrevious?.addEventListener("click", () => keenSlider.prev());
+    keenSliderNext?.addEventListener("click", () => keenSlider.next());
+  });
+</script>

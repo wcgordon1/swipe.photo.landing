@@ -1,0 +1,312 @@
+# .pages.yml — Pages CMS config for this site (Astro content collections)
+
+media:
+  name: images
+  label: Images
+  input: src/images
+  output: src/images
+  path: "" # start at src/images
+  extensions: [png, jpg, jpeg, webp, svg]
+
+settings:
+  content:
+    merge: true
+
+content:
+  # ---------------------
+  # LEGAL PAGES
+  # ---------------------
+  - name: legal
+    label: Legal Pages
+    type: collection
+    path: src/content/legal
+    view:
+      primary: page
+      fields: [page, pubDate]
+      sort: [page]
+    fields:
+      - name: page
+        label: Page Title
+        type: string
+        required: true
+      - name: pubDate
+        label: Publication Date
+        type: date
+      - name: body
+        label: Body
+        type: rich-text
+
+  # ---------------------
+  # BLOG POSTS
+  # ---------------------
+  - name: posts
+    label: Blog Posts
+    type: collection
+    path: src/content/posts
+    view:
+      primary: title
+      fields: [title, pubDate]
+      sort: [pubDate]
+      default: { sort: pubDate, order: desc }
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: pubDate
+        label: Publication Date
+        type: date
+      - name: description
+        label: Description
+        type: text
+      - name: team
+        label: Author
+        type: string
+      - name: image
+        label: Cover Image
+        type: object
+        fields:
+          - name: url
+            label: Image
+            type: image
+            options:
+              media: images
+              path: blog
+          - name: alt
+            label: Alt text
+            type: string
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: body
+        label: Body
+        type: rich-text
+
+  # ---------------------
+  # TEAM
+  # ---------------------
+  - name: team
+    label: Team Members
+    type: collection
+    path: src/content/team
+    view:
+      primary: name
+      fields: [name, role]
+      sort: [name]
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: role
+        label: Role
+        type: string
+      - name: bio
+        label: Bio
+        type: text
+      - name: achievements
+        label: Achievements
+        type: string
+        list: true
+      - name: image
+        label: Profile Image
+        type: object
+        fields:
+          - name: url
+            label: Image
+            type: image
+            options:
+              media: images
+              path: team
+          - name: alt
+            label: Alt text
+            type: string
+      - name: socials
+        label: Social Links
+        type: object
+        fields:
+          - { name: twitter,  label: Twitter URL,  type: string }
+          - { name: website,  label: Website URL,  type: string }
+          - { name: linkedin, label: LinkedIn URL, type: string }
+          - { name: email,    label: Email,        type: string }
+      - name: body
+        label: Body
+        type: rich-text
+
+  # ---------------------
+  # WORK
+  # ---------------------
+  - name: work
+    label: Work
+    type: collection
+    path: src/content/work
+    view:
+      primary: title
+      fields: [title, client, year]
+      sort: [year]
+      default: { sort: year, order: desc }
+    fields:
+      - name: title
+        label: Project Title
+        type: string
+        required: true
+      - name: client
+        label: Client
+        type: string
+      - name: location
+        label: Location
+        type: string
+      - name: year
+        label: Year
+        type: number
+      - name: summary
+        label: Summary
+        type: text
+      - name: bodyHeading
+        label: Body Heading
+        type: string
+      - name: services
+        label: Services
+        type: string
+        list: true
+      - name: industries
+        label: Industries
+        type: string
+        list: true
+      - name: featured
+        label: Featured
+        type: boolean
+      - name: status
+        label: Status
+        type: select
+        options:
+          - label: Concept
+            value: concept
+          - label: In Progress
+            value: in-progress
+          - label: Launched
+            value: launched
+        default: launched
+      - name: image
+        label: Main Image
+        type: object
+        fields:
+          - name: url
+            label: Image
+            type: image
+            options:
+              media: images
+              path: work
+          - name: alt
+            label: Alt text
+            type: string
+      - name: gallery
+        label: Gallery
+        type: object
+        list: true
+        fields:
+          - name: url
+            label: Image
+            type: image
+            options:
+              media: images
+              path: work
+          - name: alt
+            label: Alt text
+            type: string
+      - name: link
+        label: Project Link
+        type: string
+      - name: body
+        label: Body
+        type: rich-text
+
+  # ---------------------
+  # STORE
+  # ---------------------
+  - name: store
+    label: Store Products
+    type: collection
+    path: src/content/store
+    view:
+      primary: title
+      fields: [title, price, status]
+      sort: [title]
+    fields:
+      - name: title
+        label: Product Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: text
+      - name: price
+        label: Price
+        type: number
+      - name: oldPrice
+        label: Old Price
+        type: number
+      - name: currency
+        label: Currency
+        type: string
+        default: USD
+      - name: sku
+        label: SKU
+        type: string
+      - name: badge
+        label: Badge
+        type: string
+      - name: category
+        label: Category
+        type: string
+      - name: image
+        label: Main Image
+        type: object
+        fields:
+          - name: url
+            label: Image
+            type: image
+            options:
+              media: images
+              path: store
+          - name: alt
+            label: Alt text
+            type: string
+      - name: gallery
+        label: Gallery
+        type: object
+        list: true
+        fields:
+          - name: url
+            label: Image
+            type: image
+            options:
+              media: images
+              path: store
+          - name: alt
+            label: Alt text
+            type: string
+      - name: status
+        label: Status
+        type: select
+        options:
+          - label: Draft
+            value: draft
+          - label: Published
+            value: published
+          - label: Archived
+            value: archived
+        default: published
+      - name: featured
+        label: Featured
+        type: boolean
+      - name: externalUrl
+        label: External URL
+        type: string
+      - name: downloadUrl
+        label: Download URL
+        type: string
+      - name: body
+        label: Body
+        type: rich-text

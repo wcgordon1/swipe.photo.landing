@@ -1,0 +1,28 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard">
+      <div
+        class="bg-grid p-8 relative flex flex-col items-center justify-center h-dvh"
+      >
+        <Text
+          tag="h1"
+          variant="display6XL"
+          class="text-white tracking-tighter font-black uppercase relative"
+        >
+          404
+        </Text>
+        <Button isLink href="/" size="sm" variant="accent" class="w-fit mt-12">
+          Go back home
+        </Button>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

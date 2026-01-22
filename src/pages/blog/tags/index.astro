@@ -1,0 +1,45 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Content
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+---
+
+<BaseLayout>
+  <Wrapper variant="standard">
+    <div class="p-8 bg-grid">
+      <Text
+        tag="h1"
+        variant="display3XL"
+        class="text-white tracking-tighter font-black uppercase relative"
+      >
+        All tags
+      </Text>
+    </div>
+
+    <div
+      role="list"
+      class="flex flex-col gap-1 border-t border-white/20 divide-y divide-white/20"
+    >
+      {
+        tags.map((tag) => (
+          <div class="p-8">
+            <Text
+              tag="a"
+              variant="displayXL"
+              class="capitalize text-white hover:text-accent-500 duration-300 uppercase font-black tracking-tighter"
+              href={`/blog/tags/${tag}`}
+            >
+              {tag}
+            </Text>
+          </div>
+        ))
+      }
+    </div>
+  </Wrapper>
+</BaseLayout>

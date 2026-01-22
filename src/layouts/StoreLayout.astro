@@ -1,0 +1,171 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import StoreCard from "@/components/store/StoreCard.astro";
+// Content
+import { getCollection } from "astro:content";
+const { frontmatter } = Astro.props;
+const currentSlug = Astro.url.pathname.split("/").filter(Boolean).pop();
+const products = await getCollection("store");
+const related = products.filter(
+  (item) => item.slug !== currentSlug && item.data.status === "published"
+);
+const price = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: frontmatter.currency ?? "USD",
+}).format(frontmatter.price);
+const oldPrice = frontmatter.oldPrice
+  ? new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: frontmatter.currency ?? "USD",
+    }).format(frontmatter.oldPrice)
+  : null;
+const gallery = frontmatter.gallery ?? [];
+const tags = frontmatter.tags ?? [];
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="border-b">
+      <div class="p-8 relative bg-grid">
+        <span
+          class="px-3 py-1 text-xs font-semibold uppercase bg-base-950 text-white"
+        >
+          {frontmatter.badge}
+        </span>
+        <Text
+          tag="h1"
+          variant="display2XL"
+          class="text-white tracking-tighter font-black uppercase relative mt-6 text-balance"
+        >
+          {frontmatter.title}
+        </Text>
+      </div>
+      <div
+        class="p-8 border-t border-white/20 grid grid-cols-1 lg:grid-cols-3"
+      >
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-2">
+            <span class="text-white font-semibold text-xl">{price}</span>
+            <span class="text-base-300 line-through text-xl">
+              {oldPrice}
+            </span>
+          </div>
+          <Text
+            variant="textBase"
+            tag="p"
+            class="text-white font-medium mt-8 text-balance"
+          >
+            {frontmatter.description}
+          </Text>
+        </div>
+        <div class="flex flex-wrap gap-3 lg:ml-auto lg:mt-auto">
+          <Button
+            isLink
+            variant="default"
+            size="xxs"
+            href={frontmatter.externalUrl}
+          >
+            Purchase
+          </Button>
+          <Button
+            isLink
+            variant="muted"
+            size="xxs"
+            href={frontmatter.downloadUrl}
+            class="w-fit"
+          >
+            Download free demo
+          </Button>
+        </div>
+      </div>
+      <Image
+        width={1400}
+        height={1200}
+        src={frontmatter.image.url}
+        alt={frontmatter.image.alt}
+        loading="eager"
+        decoding="async"
+        class="w-full object-cover aspect-4/2 object-top"
+      />
+      <Wrapper variant="narrow" class="p-8 mx-auto">
+        <Wrapper variant="prose">
+          <slot />
+        </Wrapper>
+      </Wrapper>
+      {
+        gallery.length > 0 && (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8 border-t border-white/20">
+            {gallery.map((item) => (
+              <Image
+                src={item.url}
+                alt={item.alt}
+                width={800}
+                height={600}
+                class="w-full object-cover  aspect-4/3"
+              />
+            ))}
+          </div>
+        )
+      }
+      <div class="flex flex-wrap gap-3 p-8 border-t border-white/20">
+        <Button
+          isLink
+          variant="default"
+          size="xxs"
+          href={frontmatter.externalUrl}
+        >
+          Purchase
+        </Button>
+        <Button
+          isLink
+          variant="muted"
+          size="xxs"
+          href={frontmatter.downloadUrl}
+          class="w-fit"
+        >
+          Download free demo
+        </Button>
+      </div>
+    </Wrapper>
+  </section>
+  {
+    related.length > 0 && (
+      <section>
+        <Wrapper variant="standard">
+          <div class="p-8 bg-grid">
+            <div class="flex items-center justify-between">
+              <Text
+                tag="h2"
+                variant="displayMD"
+                class="text-white font-black uppercase tracking-tighter"
+              >
+                You might also like
+              </Text>
+              <Button
+                isLink
+                size="xs"
+                variant="default"
+                href="/store"
+                class="w-fit"
+              >
+                View all products
+              </Button>
+            </div>
+          </div>
+          <div class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-t border-white/20">
+            {related.slice(0, 3).map((item) => (
+              <StoreCard post={item} />
+            ))}
+          </div>
+        </Wrapper>
+      </section>
+    )
+  }
+</BaseLayout>

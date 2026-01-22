@@ -1,0 +1,48 @@
+---
+// Assets
+import BgGrid from "@/components/assets/BgGrid.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<section>
+  <Wrapper variant="standard" class="border-b border-white/20">
+    <div class="p-8 relative">
+      <BgGrid />
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+        <div class="flex flex-col gap-4">
+          <Text
+            tag="h2"
+            variant="displayMD"
+            class="text-white font-black uppercase tracking-tighter"
+          >
+            Subscribe to our newsletter
+          </Text>
+          <Text tag="p" variant="textLG" class="text-white/80 font-medium">
+            Get the latest news, updates and tips delivered straight to your
+            inbox.
+          </Text>
+        </div>
+        <form class="w-full flex flex-col sm:flex-row gap-2">
+          <label for="email-address" class="sr-only">Email address</label>
+          <input
+            type="email"
+            name="email"
+            id="email-address"
+            autocomplete="email"
+            required
+            class="w-full bg-base-950 border border-white/20 rounded-full px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent transition-all duration-200"
+            placeholder="Enter your email"
+          />
+          <button
+            type="submit"
+            class="bg-white text-black px-8 py-3 rounded-full font-bold uppercase hover:bg-accent-500 hover:text-white transition-colors duration-200 whitespace-nowrap"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </Wrapper>
+</section>

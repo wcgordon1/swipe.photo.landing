@@ -1,0 +1,146 @@
+---
+// Assets
+import { Image } from "astro:assets";
+
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Sections
+import BlogCard from "@/components/blog/BlogCard.astro";
+const { frontmatter } = Astro.props;
+import { getEntry } from "astro:content";
+const team = await getEntry("team", frontmatter.team);
+// Get all posts and filter by tag
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+const relatedPosts = allPosts.filter((post) =>
+  post.data.tags.some((tag) => frontmatter.tags.includes(tag))
+);
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="border-b">
+      <div class="p-8 relative bg-grid">
+        <div class="flex flex-wrap gap-2">
+          {
+            frontmatter.tags.map((tag) => (
+              <Button
+                isLink
+                size="xs"
+                variant="default"
+                href={`/blog/tags/${tag}`}
+              >
+                {tag}
+              </Button>
+            ))
+          }
+        </div>
+        <Text
+          tag="h1"
+          variant="display2XL"
+          class="text-white tracking-tighter font-black uppercase relative mt-12 text-balance"
+        >
+          {frontmatter.title}
+        </Text>
+      </div>
+      <div
+        class="grid grid-cols-1 lg:grid-cols-3 items-start justify-between gap-4 p-8 border-t border-white/20"
+      >
+        <div
+          class="flex items-center gap-2 text-white text-sm uppercase font-medium"
+        >
+          {
+            team && (
+              <>
+                <Image
+                  src={team.data.image.url}
+                  alt={team.data.image.alt}
+                  width="500"
+                  height="500"
+                  class="size-8 rounded-full object-cover border border-white/20"
+                />
+                <span>
+                  By{" "}
+                  <a
+                    href={`/team/${team.slug}`}
+                    class="hover:text-accent-500 duration-200"
+                  >
+                    {team.data.name}
+                  </a>
+                </span>
+                <span>•</span>
+              </>
+            )
+          }
+          <time datetime={new Date(frontmatter.pubDate).toISOString()}>
+            {
+              new Date(frontmatter.pubDate).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "2-digit",
+              })
+            }
+          </time>
+        </div>
+        <Text
+          variant="textLG"
+          tag="p"
+          class="text-white font-medium lg:col-span-2"
+        >
+          {frontmatter.description}
+        </Text>
+      </div>
+
+      <Image
+        width={1400}
+        height={800}
+        src={frontmatter.image.url}
+        alt={frontmatter.image.alt}
+        class="w-full object-cover aspect-4/2"
+      />
+
+      <Wrapper variant="narrow" class="p-8 mx-auto">
+        <Wrapper variant="prose">
+          <slot />
+        </Wrapper>
+      </Wrapper>
+    </Wrapper>
+  </section>
+
+  {
+    relatedPosts.length > 0 && (
+      <section>
+        <Wrapper variant="standard">
+          <div class="p-8 bg-grid">
+            <div class="flex items-center justify-between">
+              <Text
+                tag="h2"
+                variant="displayMD"
+                class="text-white font-black uppercase tracking-tighter"
+              >
+                Related posts
+              </Text>
+              <Button
+                isLink
+                size="xs"
+                variant="default"
+                href="/blog"
+                class="w-fit"
+              >
+                View all posts{" "}
+              </Button>
+            </div>
+          </div>
+          <div class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-t border-white/20">
+            {relatedPosts.slice(0, 3).map((post) => (
+              <BlogCard post={post} />
+            ))}
+          </div>
+        </Wrapper>
+      </section>
+    )
+  }
+</BaseLayout>

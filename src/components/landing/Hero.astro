@@ -1,0 +1,22 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import Marquee from "@/components/landing/Marquee.astro";
+---
+<section>
+  <Wrapper variant="standard">
+    <div class="bg-grid p-8 relative">
+      <Text
+        tag="h1"
+        variant="display3XL"
+        class="text-white tracking-tighter font-black uppercase relative"
+      >
+        Maximize your online presence with a unique and engaging one-page
+        website that delivers outstanding results.
+      </Text>
+    </div>
+    <Marquee />
+  </Wrapper>
+</section>

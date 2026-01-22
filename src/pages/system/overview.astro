@@ -1,0 +1,147 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const pageSections = [
+  {
+    title: "Static",
+    columns: [
+      {
+        category: " Pages",
+        links: [
+          { text: "Home", href: "/" },
+          { text: "404", href: "/404" },
+          { text: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        category: "System",
+        links: [
+          { text: "Colors", href: "/system/colors" },
+          { text: "Links", href: "/system/link" },
+          { text: "Buttons", href: "/system/buttons" },
+          { text: "Typography", href: "/system/typography" },
+        ],
+      },
+      {
+        category: "Resources",
+        links: [
+          { text: "Social", href: "https://x.com/lexingtonthemes" },
+          {
+            text: "License",
+            href: "https://lexingtonthemes.com/legal/license",
+          },
+          {
+            text: "Documentation",
+            href: "https://lexingtonthemes.com/documentation/",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Content Collections",
+    columns: [
+      {
+        category: "Work",
+        links: [
+          { text: "Home", href: "/work/" },
+          { text: "Details", href: "/work/reverie" },
+        ],
+      },
+      {
+        category: "Team",
+        links: [
+          { text: "Home", href: "/team/" },
+          { text: "Details", href: "/team/alex-chen" },
+        ],
+      },
+      {
+        category: "Store",
+        links: [
+          { text: "Home", href: "/store/" },
+          { text: "Details", href: "/store/1" },
+        ],
+      },
+      {
+        category: "Blog Pages",
+        links: [
+          { text: "Home ", href: "/blog/" },
+          { text: "Post", href: "/blog/posts/1" },
+          { text: "Tag Index", href: "/blog/tags" },
+          { text: "Tag Category", href: "/blog/tags/design" },
+          { text: "RSS", href: "/rss.xml" },
+        ],
+      },
+      {
+        category: "Legal",
+        links: [
+          { text: "Terms Of Use", href: "/legal/terms" },
+          { text: "Privacy Policy", href: "/legal/privacy" },
+        ],
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard">
+      <div class="p-8 bg-grid">
+        <Text
+          tag="h2"
+          variant="displayXL"
+          class="font-black uppercase text-white"
+        >
+          Overview
+        </Text>
+      </div>
+      <div class="flex flex-col gap-12">
+        {
+          pageSections.map((section) => (
+            <div class="divide-y divide-white/20">
+              <div class="p-8 border-y border-white/20">
+                <Text
+                  tag="h3"
+                  variant="textLG"
+                  class="font-black text-white uppercase"
+                >
+                  {section.title}
+                </Text>
+              </div>
+              <div class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 xl:grid-cols-4">
+                {section.columns.map((column) => (
+                  <div>
+                    <Text
+                      tag="p"
+                      variant="textBase"
+                      class="font-medium text-white"
+                    >
+                      {column.category}
+                    </Text>
+                    <ul role="list" class="mt-2 ">
+                      {column.links.map((link) => (
+                        <li>
+                          <Text
+                            tag="a"
+                            variant="textSM"
+                            href={link.href}
+                            class="text-base-500 hover:text-white duration-300"
+                          >
+                            {link.text}
+                          </Text>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

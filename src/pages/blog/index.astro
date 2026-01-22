@@ -1,0 +1,40 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import BlogCard from "@/components/blog/BlogCard.astro";
+// Sections
+import Subscribe from "@/components/ctas/Subscribe.astro";
+// Content
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+allPosts.sort((a, b) => {
+  const dateA = new Date(a.data.pubDate).getTime(); // Convert to timestamp
+  const dateB = new Date(b.data.pubDate).getTime(); // Convert to timestamp
+  return dateB - dateA; // Compare timestamps
+});
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard">
+      <div class="p-8 bg-grid">
+        <Text
+          tag="h1"
+          variant="display3XL"
+          class="text-white tracking-tighter font-black uppercase relative"
+        >
+          Welcome to our blog
+        </Text>
+      </div>
+      <div
+        class="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-t border-white/20"
+      >
+        {allPosts.map((post) => <BlogCard post={post} />)}
+      </div>
+    </Wrapper>
+  </section>
+  <Subscribe />
+</BaseLayout>

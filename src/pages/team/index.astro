@@ -1,0 +1,35 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import TeamCard from "@/components/team/TeamCard.astro";
+// Content
+import { getCollection } from "astro:content";
+const allAuthors = await getCollection("team");
+const sortedAuthors = allAuthors.toSorted((a, b) => {
+  const nameA = a.data.name.toLowerCase();
+  const nameB = b.data.name.toLowerCase();
+  return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+});
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard">
+      <div class="p-8 bg-grid">
+        <Text
+          tag="h1"
+          variant="display3XL"
+          class="text-white tracking-tighter font-black uppercase relative"
+        >
+          Our team
+        </Text>
+      </div>
+      <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {sortedAuthors.map((post) => <TeamCard post={post} />)}
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>
