@@ -9,12 +9,26 @@ import Navigation from "@/components/global/Navigation.astro";
 import Search from "@/components/global/Search.astro";
 // Hides the  navigation, or footer on selected screens by passing props:
 // <BaseLayout hideNavigation={true} hideFooter={true}>
-const { hideNavigation = false, hideFooter = false } = Astro.props;
+const {
+  hideNavigation = false,
+  hideFooter = false,
+  title,
+  description,
+  canonical,
+  ogImage,
+  noindex,
+} = Astro.props;
 ---
 
 <html lang="en" class="scroll-smooth dark">
   <head>
-    <BaseHead />
+    <BaseHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      noindex={noindex}
+    />
   </head>
   <body class="flex flex-col bg-base-950">
     {!hideNavigation && <Navigation />}

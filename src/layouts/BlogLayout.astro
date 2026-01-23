@@ -20,7 +20,11 @@ const relatedPosts = allPosts.filter((post) =>
 );
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  ogImage={frontmatter.image.url.src}
+>
   <section>
     <Wrapper variant="standard" class="border-b">
       <div class="p-8 relative bg-grid">

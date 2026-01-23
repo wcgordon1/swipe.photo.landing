@@ -1,21 +1,38 @@
 ---
 import { AstroSeo } from "@astrolib/seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Swipe.Photo – Clean and Declutter Your iPhone Photos Fast",
+  description = "Swipe.Photo helps you quickly clean and declutter your iPhone camera roll by swiping to keep what matters and delete what doesn’t.",
+  canonical = "https://swipe.photo",
+  ogImage = "https://swipe.photo/og-image.jpg",
+  noindex = false,
+} = Astro.props;
 ---
 
 <AstroSeo
-  title="Swipe.Photo – Clean and Declutter Your iPhone Photos Fast"
-  description="Swipe.Photo helps you quickly clean and declutter your iPhone camera roll by swiping to keep what matters and delete what doesn’t."
-  canonical="https:swipe.photo"
+  title={title}
+  description={description}
+  canonical={canonical}
+  noindex={noindex}
   openGraph={{
-    url: "https://swipe.photo",
-    title: "Swipe.Photo – Clean and Declutter Your iPhone Photos Fast",
-    description: "Swipe.Photo helps you quickly clean and declutter your iPhone camera roll by swiping to keep what matters and delete what doesn’t.",
+    url: canonical,
+    title: title,
+    description: description,
     images: [
       {
-        url: "https://yourwebsite.com/og-image.jpg",
+        url: ogImage,
         width: 1200,
         height: 630,
-        alt: "Open Graph Image Alt",
+        alt: title,
         type: "image/jpeg",
       },
     ],
@@ -24,8 +41,8 @@ import { AstroSeo } from "@astrolib/seo";
     locale: "en_US",
   }}
   twitter={{
-    handle: "@yourhandle",
-    site: "@yourwebsite",
+    handle: "@swipephoto",
+    site: "@swipephoto",
     cardType: "summary_large_image",
   }}
 />

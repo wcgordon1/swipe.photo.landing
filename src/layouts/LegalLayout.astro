@@ -6,7 +6,7 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout title={frontmatter.page} description={`Legal information: ${frontmatter.page}`}>
   <section>
     <Wrapper variant="standard" class="border-b">
       <div class="p-8 relative bg-grid">

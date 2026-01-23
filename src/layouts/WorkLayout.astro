@@ -20,7 +20,11 @@ const industries = frontmatter.industries ?? [];
 const gallery = frontmatter.gallery ?? [];
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={frontmatter.title}
+  description={frontmatter.summary}
+  ogImage={frontmatter.image.url.src}
+>
   <section>
     <Wrapper variant="standard">
       <div class="p-8 relative bg-grid">

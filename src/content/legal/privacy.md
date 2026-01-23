@@ -9,7 +9,7 @@ pubDate: 2026-01-22
 
 Swipe.Photo is a simple iPhone app for reviewing photos and swiping to keep or delete. We built it to work **without accounts** and without collecting personal information.
 
-If you have questions, email: **support@starterbuild.com** (replace with your real support email)
+If you have questions, email: **support@starterbuild.com** 
 
 ---
 

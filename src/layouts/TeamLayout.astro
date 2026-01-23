@@ -38,7 +38,11 @@ const socialLinks = [
 ];
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={frontmatter.name}
+  description={bioSummary}
+  ogImage={frontmatter.image.url.src}
+>
   <section>
     <Wrapper variant="standard" class="border-b">
       <div class="p-8 relative bg-grid">

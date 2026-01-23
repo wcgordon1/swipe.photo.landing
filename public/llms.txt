@@ -1,0 +1,19 @@
+# Swipe.Photo
+
+Swipe.Photo is a specialized tool for iPhone users to quickly clean and declutter their camera rolls. It uses a simple swipe-to-keep or swipe-to-delete interface to help users manage their photo storage efficiently.
+
+## Core Features
+- Quick photo decluttering via swiping gestures.
+- Designed specifically for iPhone camera roll management.
+- Focuses on privacy and speed.
+
+## Navigation
+- [Home](https://swipe.photo/) - Main landing page and app overview.
+- [Blog](https://swipe.photo/blog) - Tips on photo organization and iPhone storage management.
+- [Work](https://swipe.photo/work) - Showcasing the design and development process.
+- [Store](https://swipe.photo/store) - Digital products related to photography and organization.
+- [Team](https://swipe.photo/team) - The people behind Swipe.Photo.
+
+## Key Content
+- [How to free up iPhone storage](https://swipe.photo/blog/posts/how-to-free-up-iphone-storage)
+- [How to declutter iPhone photos](https://swipe.photo/blog/posts/how-to-declutter-iphone-photos)

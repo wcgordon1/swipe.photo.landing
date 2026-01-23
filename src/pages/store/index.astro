@@ -10,7 +10,10 @@ import { getCollection } from "astro:content";
 const allProducts = await getCollection("store");
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Store | Swipe.Photo"
+  description="Digital products, presets, and tools to help you take better photos and keep your camera roll organized."
+>
   <section>
     <Wrapper variant="standard">
       <div class="p-8 bg-grid">
