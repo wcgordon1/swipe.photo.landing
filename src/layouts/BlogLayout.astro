@@ -18,12 +18,45 @@ const allPosts = await getCollection("posts");
 const relatedPosts = allPosts.filter((post) =>
   post.data.tags.some((tag) => frontmatter.tags.includes(tag))
 );
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  author: {
+    "@type": "Person",
+    name: team?.data.name || "Swipe.Photo Team",
+    url: team
+      ? new URL(`/team/${team.slug}`, Astro.site).href
+      : Astro.site.href,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Swipe.Photo",
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/favicon.ico", Astro.site).href,
+    },
+    url: Astro.site.href,
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonicalUrl,
+  },
+  url: canonicalUrl,
+  datePublished: new Date(frontmatter.pubDate).toISOString(),
+  image: [new URL(frontmatter.image.url.src, Astro.site).href],
+};
 ---
 
 <BaseLayout
   title={frontmatter.title}
   description={frontmatter.description}
   ogImage={frontmatter.image.url.src}
+  structuredData={articleJsonLd}
 >
   <section>
     <Wrapper variant="standard" class="border-b">
